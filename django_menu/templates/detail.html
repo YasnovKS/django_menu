@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if context %}
+        {% for item in context %}
+    <div class="items">
+        <ui>
+            <li>
+                <a href="{% url 'menu:detail' item.id %}">
+                    {{ item.name }} - {{ item.id }}
+                </a>
+            </li>
+        </ui>
+    </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

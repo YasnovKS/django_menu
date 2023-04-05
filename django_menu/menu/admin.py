@@ -1,3 +1,6 @@
 from django.contrib import admin
+from mptt.admin import DraggableMPTTAdmin
+from menu.models import MenuItem
 
-# Register your models here.
+
+admin.site.register(MenuItem, DraggableMPTTAdmin)

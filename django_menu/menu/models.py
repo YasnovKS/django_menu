@@ -1,46 +1,24 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 
-class MenuItem(models.Model):
+class MenuItem(MPTTModel):
     '''Class for menu items'''
 
     name = models.CharField(max_length=50,
                             verbose_name='Название',
                             )
-    url = models.URLField(verbose_name='Ссылка')
-    position = models.PositiveIntegerField(default=0,
-                                           verbose_name='Уровень вложенности',
-                                           )
+    parent = TreeForeignKey('self',
+                            on_delete=models.CASCADE,
+                            null=True,
+                            blank=True,
+                            related_name='children'
+                            )
 
-    class Meta:
-        ordering = ['position']
+    class MPTTMeta:
+        order_insertion_by = ['name']
         verbose_name = 'Пункт меню'
         verbose_name_plural = 'Пункты меню'
 
     def __str__(self) -> str:
-        return self.name
-
-
-class Menu(models.Model):
-    '''intermediate class for many-to-many relationship'''
-
-    parent = models.ForeignKey(MenuItem,
-                               on_delete=models.CASCADE,
-                               related_name='main_menu',
-                               )
-    child = models.ForeignKey(MenuItem,
-                              on_delete=models.DO_NOTHING,
-                              related_name='sub_menu',
-                              null=True,
-                              )
-
-    class Meta:
-        constraints = [models.UniqueConstraint(fields=['parent', 'child'],
-                                               name='unique_menu_relationship'
-                                               ),
-                       ]
-
-    def __str__(self) -> str:
-        if not self.child:
-            return f'Меню {self.parent}'
-        return f'Подменю {self.child} меню {self.parent}'
+        return str(self.name)
