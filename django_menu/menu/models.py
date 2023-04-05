@@ -7,7 +7,7 @@ class MenuItem(models.Model):
     name = models.CharField(max_length=50,
                             verbose_name='Название',
                             )
-    url = models.URLField(verbose)
+    url = models.URLField(verbose_name='Ссылка')
     position = models.PositiveIntegerField(default=0,
                                            verbose_name='Уровень вложенности',
                                            )
@@ -36,7 +36,7 @@ class Menu(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=['parent', 'child'],
-                                               name='unique_menu_relation'
+                                               name='unique_menu_relationship'
                                                ),
                        ]
 
