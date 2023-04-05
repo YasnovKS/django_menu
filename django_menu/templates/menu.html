@@ -1,0 +1,22 @@
+{% load mptt_tags %}
+<ul class="root">
+    {% recursetree menu %}
+        <li>
+          <a href="{% url 'menu:detail' node.id %}">
+            {{ node.name }}
+          </a>
+          {% if node.tree_id == selected_node.tree_id or node.is_root_node %}
+            <ul class="children">
+                {% for child in node.get_children %}
+                    <li>
+                        <a href="{% url 'menu:detail' child.id %}">
+                            {{ child }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+    {% endrecursetree %}
+  </ul>
+  <p>{{ itemid }}</p>
