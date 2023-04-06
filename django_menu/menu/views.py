@@ -11,6 +11,6 @@ def detail_page(request, item_id):
     obj = get_object_or_404(MenuItem, pk=item_id)
     children_items = obj.get_children()
     return render(request, template, {'context': children_items,
-                                      'obj': obj
+                                      'obj': obj,
                                       }
                   )
