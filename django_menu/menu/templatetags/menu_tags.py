@@ -7,7 +7,7 @@ register = template.Library()
 @register.inclusion_tag('menu.html', takes_context=True)
 def draw_menu(context, menu_name):
     obj = context.get('obj')
-    menu = MenuItem.objects.filter(main_menu=menu_name)
+    menu = MenuItem.objects.filter(main_menu__title=menu_name)
     return {'menu': menu,
             'obj': obj,
             }

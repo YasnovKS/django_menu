@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 {% load static %}
-{% load menu_tag %}
+{% load menu_tags %}
     <head>    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +12,8 @@
         </title>
     </head>
     <body>
-        {% draw_menu %}
+        {% draw_menu 'Транспорт' %}
+        {% draw_menu 'Спортивный инвентарь' %}
         {% block content %}
         {% endblock %}
     </body>
-    
