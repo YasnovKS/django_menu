@@ -1,0 +1,57 @@
+body {
+    box-sizing: border-box;
+}
+
+a.node_link {
+    font-family: Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+a.active {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+div.all-content {
+    display: flex;
+    flex-direction: row;
+}
+
+div.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 75vw;
+    height: 50vh;
+}
+
+div.menu-bar {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+
+a.linked_item_name {
+    font-family: Tahoma, sans-serif;
+    font-size: 30px;
+}
+
+div.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px;
+    border-radius: 25px;
+    height: 30vh;
+    padding: 10px;
+    margin: 5px;
+    background-color: rgba(174, 240, 207, 0.856);
+
+}
+
+.item_description {
+    font-family: Tahoma, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}

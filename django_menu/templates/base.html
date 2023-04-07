@@ -5,15 +5,25 @@
     <head>    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
         <title>
             {% block title %}
             {% endblock %}
         </title>
     </head>
     <body>
-        {% draw_menu 'Транспорт' %}
-        {% draw_menu 'Спортивный инвентарь' %}
-        {% block content %}
-        {% endblock %}
+        <div class="all-content">
+            <div class="menu-bar">
+                <div class="menu">
+                    {% draw_menu 'Транспорт' %}
+                </div>
+                <div class="menu">
+                    {% draw_menu 'Спортивный инвентарь' %}
+                </div>
+            </div>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </body>

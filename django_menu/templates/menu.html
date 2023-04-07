@@ -2,7 +2,7 @@
 <ul class="root">
   {% recursetree menu %}
     <li>
-      <a href="{% url 'menu:detail' node.id %}">
+      <a class="node_link {% if node.id == obj.id %}active{% endif %}" href="{% url 'menu:detail' node.id %}">
         {{ node.name }}
       </a>
       {% if node.tree_id == obj.tree_id and node.level <= obj.level and node in obj.get_family %}

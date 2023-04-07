@@ -2,15 +2,20 @@
 {% block content %}
     {% if context %}
         {% for item in context %}
-    <div class="items">
-        <ui>
-            <li>
-                <a href="{% url 'menu:detail' item.id %}">
-                    {{ item.name }}
-                </a>
-            </li>
-        </ui>
-    </div>
+        <div class="item">
+            <a class="linked_item_name" href="{% url 'menu:detail' item.id %}">
+                {{ item.name }}
+            </a>
+            <p class="item_description">
+                Здесь могло быть описание элемента
+            </p>
+        </div>
         {% endfor %}
+    {% else %}
+        <div class="item">
+            <p class="item_description">
+                Это конечный элемент меню. Скорее всего тут могла быть карточка товара.
+            </p>
+        </div>
     {% endif %}
 {% endblock %}
